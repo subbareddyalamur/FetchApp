@@ -26,5 +26,15 @@ fetchUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 		return dogName + '|' + dogNumber + '|' + dogLink;
 	},
 
+	createEmailNotification: function() {
+		var adopterEmail = this.getParameter('sysparm_adopter_email');
+		var adoptionCenter = this.getParameter('sysparm_adoption_center');
+		var adoptionCenterEmail = '';
+		var ac = new GlideRecord('x_355755_fetch_adoption_center');
+		ac.get(adoptionCenter);
+		adoptionCenterEmail = ac.email.getDisplayValue();
+		gs.eventQueue('x_355755_fetch.adoption_email', ac, adoptionCenterEmail, adopterEmail);
+		return;
+	};
     type: 'fetchUtils'
 });
