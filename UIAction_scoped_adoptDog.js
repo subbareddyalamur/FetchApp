@@ -1,5 +1,6 @@
 // client checked
 //show insert unchecked
+// list v3 compatible checked.
 //onclick - adoptDog
 //condition - current.status == 'active'
 
